@@ -1,40 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <!--  <title>{{ title }}</title> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
 
-    <div class="container-fluid">
-      <h1>Hello World!</h1>
-      <p>Resize the browser window to see the effect.</p>
-      <div class="row">
-        <div class="col-sm-4" style="background-color:lavender;">
-            <div class="well well-lg">
-              <p>Welcome to {{ title }}!</p>
-              <p> All credit goes to  <a href="{{ credit }}">{{ credit }} </a></p>
+    <!-- Own css -->
+    <link rel="stylesheet" href="stylesheets/style.css" />
+</head>
+
+<body>
+  <ul id = "myTab" class = "nav nav-tabs">
+     <li class = "active">
+        <a href = "#home" data-toggle = "tab">
+           Corpus Preparation
+        </a>
+     </li>
+
+     <li><a href = "#Training" data-toggle = "tab">Training</a></li>
+
+  </ul>
+
+  <div id = "myTabContent" class = "tab-content">
+         <div class = "tab-pane fade in active" id = "home">
+           <div class="row">
+             <div class="col-sm-3">
+                 <h5><b>Languages</b></h5>
+                 <div class="well">
+                     <p>Languages</p>
+                 </div>
+             </div>
+             <div class="col-sm-5   col-sm-offset-4">
+                 <h5><b>Translation Model</b></h5>
+                 <div class="well">
+                     <p>Translation Model</p>
+                 </div>
+             </div>
             </div>
-          </div>
-        <div class="col-sm-4" style="background-color:lavenderblush;">
+            <div class="row">
+             <div class="col-sm-7">
+                 <h5><b>Results</b></h5>
+                 <div class="well">
+                     <p>Results</p>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                 </div>
+             </div>
+             <div class="col-sm-5">
 
-              <div class="well">
-                <p>Welcome to {{ title }}!</p>
-                <p> All credit goes to  <a href="{{ credit }}">{{ credit }} </a></p>
-              </div>
-        </div>
-        <div class="col-sm-4" style="background-color:lavender;">
+               <div class="row">
+                   <h5><b>Language Model</b></h5>
+                 <div class="well">
+                     <p>Language Model</p>
+                 </div>
+               </div>
+               <div class="row">
+                   <h5><b>Settings</b></h5>
+                 <div class="well">
+                     <p>Settings</p>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="well">
+                     <p>Start corpus preprocessing</p>
+                 </div>
+               </div>
+             </div>
+           </div>
 
-              <div class="well well-sm">
-                <p>Welcome to {{ title }}!</p>
-                <p> All credit goes to  <a href="{{ credit }}">{{ credit }} </a></p>
-              </div>
-        </div>
-      </div>
-    </div>
-  </body>
+
+
+     </div>
+
+
+     <div class = "tab-pane fade" id = "Training">
+       <div class = "tab-pane fade in active" id = "home">
+         <div class="col-sm-6">
+             <div class="well well-lg">
+                 <p>2 to {{ title }}!</p>
+             </div>
+         </div>
+     </div>
+
+
+  </div>
+</body>
+
 </html>
