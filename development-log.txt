@@ -1,0 +1,2 @@
+Copied the docker-compose express skeleton project with nodedemon integrated, from https://github.com/b00giZm/docker-compose-nodejs-examples
+
