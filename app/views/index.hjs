@@ -43,7 +43,7 @@
                             </select>
                             <br>
                             <b>Target text&nbsp; </b>
-                            <select name="trg_lang">
+                            <select name="trg_lang" id="trg_lang">
                                 <option value="en">en</option>
                                     <option value="fr">fr</option>
                                         <option value="de">de</option>
@@ -53,7 +53,7 @@
                     <div class="col-sm-5   col-sm-offset-4">
                         <h5><b>Translation Model</b></h5>
                         <div class="well">
-                            <input name="TM" type="file">
+                            <input id="TM" name="TM" type="file">
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                         <div class="row">
                             <h5><b>Language Model</b></h5>
                             <div class="well">
-                                <input name="LM" type="file">
+                                <input id="LM" name="LM" type="file">
                             </div>
                         </div>
                         <div class="row">
@@ -123,7 +123,7 @@
               $.ajax({
                       url:'',
                       type:'POST',
-                      data:$(this).serialize(),
+                      data:$(this).serialize() + '&LM=' + $("#LM").val() + '&TM=' + $("#TM").val(),
                       success:function(result){
                           $("#response").text(JSON.stringify(result));
 
