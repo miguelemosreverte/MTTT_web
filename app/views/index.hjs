@@ -14,89 +14,127 @@
 </head>
 
 <body>
-  <ul id = "myTab" class = "nav nav-tabs">
-     <li class = "active">
-        <a href = "#home" data-toggle = "tab">
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#home" data-toggle="tab">
            Corpus Preparation
         </a>
-     </li>
+        </li>
 
-     <li><a href = "#Training" data-toggle = "tab">Training</a></li>
+        <li><a href="#Training" data-toggle="tab">Training</a>
+        </li>
 
-  </ul>
+    </ul>
 
-  <div id = "myTabContent" class = "tab-content">
-         <div class = "tab-pane fade in active" id = "home">
-           <div class="row">
-             <div class="col-sm-3">
-                 <h5><b>Languages</b></h5>
-                 <div class="well">
-                     <p>Languages</p>
-                 </div>
-             </div>
-             <div class="col-sm-5   col-sm-offset-4">
-                 <h5><b>Translation Model</b></h5>
-                 <div class="well">
-                     <p>Translation Model</p>
-                 </div>
-             </div>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+
+            <form id="formoid" method="post">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h5><b>Languages</b></h5>
+                        <div class="well">
+                            <b>Source text</b>
+                            <select name="src_lang">
+                                <option value="en">en</option>
+                                    <option value="fr">fr</option>
+                                        <option value="de">de</option>
+                            </select>
+                            <br>
+                            <b>Target text&nbsp; </b>
+                            <select name="trg_lang">
+                                <option value="en">en</option>
+                                    <option value="fr">fr</option>
+                                        <option value="de">de</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-5   col-sm-offset-4">
+                        <h5><b>Translation Model</b></h5>
+                        <div class="well">
+                            <input name="TM" type="file">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h5><b>Results</b></h5>
+                        <div class="well">
+                            <p>Results</p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+
+                        <div class="row">
+                            <h5><b>Language Model</b></h5>
+                            <div class="well">
+                                <input name="LM" type="file">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5><b>Settings</b></h5>
+                            <div class="well">
+                                this is not neccesary now, as the user can download the results anytime.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="well">
+                                <input type="submit" value="Start corpus preproccesing">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+        <div class="tab-pane fade" id="Training">
+            <div class="tab-pane fade in active" id="home">
+                <div class="col-sm-6">
+                    <div class="well well-lg">
+                        <p>2 to {{ title }}!</p>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-             <div class="col-sm-7">
-                 <h5><b>Results</b></h5>
-                 <div class="well">
-                     <p>Results</p>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                 </div>
-             </div>
-             <div class="col-sm-5">
-
-               <div class="row">
-                   <h5><b>Language Model</b></h5>
-                 <div class="well">
-                     <p>Language Model</p>
-                 </div>
-               </div>
-               <div class="row">
-                   <h5><b>Settings</b></h5>
-                 <div class="well">
-                     <p>Settings</p>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="well">
-                     <p>Start corpus preprocessing</p>
-                 </div>
-               </div>
-             </div>
-           </div>
 
 
+        </div>
+        <div id="response"></div>
+        <script type='text/javascript'>
+        $(function(){
+          $("#formoid").submit(function(event){
+              event.preventDefault();
 
-     </div>
+              $.ajax({
+                      url:'',
+                      type:'POST',
+                      data:$(this).serialize(),
+                      success:function(result){
+                          $("#response").text(JSON.stringify(result));
 
+                      }
 
-     <div class = "tab-pane fade" id = "Training">
-       <div class = "tab-pane fade in active" id = "home">
-         <div class="col-sm-6">
-             <div class="well well-lg">
-                 <p>2 to {{ title }}!</p>
-             </div>
-         </div>
-     </div>
+                    });
+                });
+        });
+        </script>
 
-
-  </div>
+        {{src_lang}} {{trg_lang}} {{TM}} {{LM}}
 </body>
 
 </html>
