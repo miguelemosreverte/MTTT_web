@@ -5,7 +5,7 @@ web:
   ports:
     - "3030:3000"
 
-Moses-API:
-  build: ./Moses-API/
+moses_api:
+  build: ./Moses_API/
   ports:
     - "5000:5000"
