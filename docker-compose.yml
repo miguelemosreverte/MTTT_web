@@ -6,6 +6,6 @@ web:
     - "3030:3000"
 
 moses_api:
-  build: ./Moses_API/
+  build: ./Moses-API/
   ports:
     - "5000:5000"
