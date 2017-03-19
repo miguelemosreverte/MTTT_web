@@ -1,0 +1,3 @@
+[submodule "Moses-API"]
+	path = Moses-API
+	url = https://github.com/miguelemosreverte/Moses-API
