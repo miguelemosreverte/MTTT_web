@@ -1,6 +1,11 @@
 web:
-  build: .
+  build: ./app/
   volumes:
     - "./app:/src/app"
   ports:
     - "3030:3000"
+
+Moses-API:
+  build: ./Moses-API/
+  ports:
+    - "5000:5000"
