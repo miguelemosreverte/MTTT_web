@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="javascripts/handleFileSelect.js"></script>
     <!-- Own css -->
     <link rel="stylesheet" href="stylesheets/style.css" />
 </head>
@@ -30,13 +30,13 @@
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active" id="home">
 
-            <form id="formoid" method="post">
+            <form enctype="multipart/form-data" id="formoid" method="post">
                 <div class="row">
                     <div class="col-sm-3">
                         <h5><b>Languages</b></h5>
                         <div class="well">
                             <b>Source text</b>
-                            <select name="src_lang">
+                            <select name="src_lang" id="src_lang">
                                 <option value="en">en</option>
                                     <option value="fr">fr</option>
                                         <option value="de">de</option>
@@ -80,7 +80,9 @@
                         <div class="row">
                             <h5><b>Language Model</b></h5>
                             <div class="well">
-                                <input id="LM" name="LM" type="file">
+                                <input type="file" id="files" name="LM" />
+                                <button onclick="abortRead();">Cancel</button>
+                                <div id="progress_bar"><div class="percent">0%</div></div>
                             </div>
                         </div>
                         <div class="row">
@@ -100,6 +102,7 @@
             </form>
 
 
+            <script>addEventListenerToFileUploads(document);</script>
         </div>
 
 
@@ -111,26 +114,45 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
+
+        <div class="tab-pane fade" id="Machine Translation">
+            <div class="tab-pane fade in active" id="home">
+                <div class="col-sm-6">
+                    <div class="well well-lg">
+                        <p>2 to {{ title }}!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="response"></div>
         <script type='text/javascript'>
         $(function(){
           $("#formoid").submit(function(event){
               event.preventDefault();
-
-              $.ajax({
-                      url:'',
-                      type:'POST',
-                      data:$(this).serialize() + '&LM=' + $("#LM").val() + '&TM=' + $("#TM").val(),
-                      success:function(result){
-                          $("#response").text(JSON.stringify(result));
-
-                      }
-
-                    });
-                });
+              var input = document.getElementById('files');
+              if (!input.files[0]) {
+                alert("Please select a file before clicking 'Load'");
+              }
+              else {
+                file = input.files[0];
+                var reader = new FileReader();
+                reader.readAsText(file);
+                reader.onload = function(e) {
+                            // browser completed reading file - display it
+                            //alert(e.target.result);
+                            $.ajax({
+                                    url:'',
+                                    type:'POST',
+                                    data:"&src_lang=" + $("#src_lang").val() + "&trg_lang=" + $("#trg_lang").val() + '&LM=' + e.target.result + '&TM=' + $("#TM").val(),
+                                    success:function(result){
+                                        $("#response").text(JSON.stringify(result));
+                                    }
+                                  });
+                        };
+              }
+          });
         });
         </script>
 
