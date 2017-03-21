@@ -53,10 +53,21 @@ a {
 		background:rgba(80,120,255,0.05);
 	}
 
-fieldset {
-	border:0;
-	padding:0; margin:0;
-}
+  fieldset {
+      min-height:20px;
+      padding:19px;
+      margin-bottom:20px;
+      background-color:#f5f5f5;
+      border:1px solid #e3e3e3;
+      border-radius:4px;
+      -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.05);
+      box-shadow:inset 0 1px 1px rgba(0,0,0,.05)
+  }
+  legend{
+      width:inherit; /* Or auto */
+      padding:0 10px; /* To give a bit of padding on the left and right */
+      border-bottom:none;
+  }
 
 #progress_bar {
   margin: 10px 0;

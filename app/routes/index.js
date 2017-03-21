@@ -1,17 +1,27 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express', credit: 'https://github.com/b00giZm/docker-compose-nodejs-examples' });
+  res.render('index', { title: 'Express' });
 });
 
 router.post('/', function(req, res) {
 
+    request({
+      uri: "http://172.20.129.2:5000/haus",
+      method: "GET",
+    }, function(error, response, body) {
+      if (error){
+        res.json(JSON.stringify(error));
+      }
+      else{
+        res.json(body);
+      }
+    });
 
-    console.log(req.body);
-    res.json({ src_lang: req.body.src_lang,trg_lang: req.body.trg_lang,TM: req.body.TM,LM: req.body.LM});
-    //res.json(JSON.stringify(req.files));
+
 });
 
 module.exports = router;
