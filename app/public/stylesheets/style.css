@@ -57,6 +57,7 @@ a {
       min-height:20px;
       padding:19px;
       margin-bottom:20px;
+      margin-top:20px;
       background-color:#f5f5f5;
       border:1px solid #e3e3e3;
       border-radius:4px;
@@ -64,27 +65,35 @@ a {
       box-shadow:inset 0 1px 1px rgba(0,0,0,.05)
   }
   legend{
+      font-size: 1em;
+      color:slategrey;
+
+      font-weight:  bold;
       width:inherit; /* Or auto */
       padding:0 10px; /* To give a bit of padding on the left and right */
       border-bottom:none;
   }
 
-#progress_bar {
-  margin: 10px 0;
-  padding: 3px;
-  border: 1px solid #000;
-  font-size: 14px;
-  clear: both;
-  opacity: 0;
-  -moz-transition: opacity 1s linear;
-  -o-transition: opacity 1s linear;
-  -webkit-transition: opacity 1s linear;
-}
-#progress_bar.loading {
-  opacity: 1.0;
-}
-#progress_bar .percent {
-  background-color: #99ccff;
-  height: auto;
-  width: 0;
-}
+  #progress_bar {
+    float: left;
+    width:50%;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+  #progress_bar.loading {
+    opacity: 1.0;
+  }
+  #progress_bar .percent {
+    width: 10%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }
+
+input[type="file"] {
+  float: left;
+  width:50%;
+  }

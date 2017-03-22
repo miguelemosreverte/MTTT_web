@@ -21,8 +21,8 @@
         </a>
         </li>
 
-        <li><a href="#Training" data-toggle="tab">Training</a>
-        </li>
+        <li><a href="#Training" data-toggle="tab">Training</a></li>
+        <li><a href="#MachineTranslation" data-toggle="tab">Machine Translation</a></li>
 
     </ul>
 
@@ -50,16 +50,14 @@
                         </fieldset>
                     </div>
                     <div class="col-sm-5   col-sm-offset-4">
-                        <h5><b>Translation Model</b></h5>
-                        <div class="well">
+                        <fieldset><legend>Translation Model</legend>
                             <input name="TM" type="file">
-                        </div>
+                        </fieldset>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
-                        <h5><b>Results</b></h5>
-                        <div class="well">
+                        <fieldset><legend>Results</legend>
                             <p>Results</p>
                             <br>
                             <br>
@@ -72,32 +70,30 @@
                             <br>
                             <br>
                             <br>
-                        </div>
+                        </fieldset>
                     </div>
                     <div class="col-sm-5">
 
                         <div class="row">
-                            <h5><b>Language Model</b></h5>
-                            <div class="well">
-                                <input name="LM" type="file">
-                            </div>
+                            <fieldset><legend>Language Model</legend>
+                            <input type="file" class="files"  name="LM">
+                            <div id="progress_bar"><div class="percent">0%</div></div>
+                            </fieldset>
                         </div>
                         <div class="row">
-                            <h5><b>Settings</b></h5>
-                            <div class="well">
+                            <fieldset><legend>Settings</legend>
                                 this is not neccesary now, as the user can download the results anytime.
-                            </div>
+                            </fieldset>
                         </div>
                         <div class="row">
-                            <div class="well">
+                            <fieldset>
                                 <input type="submit" value="Start corpus preproccesing">
-                            </div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
 
             </form>
-
 
         </div>
 
@@ -110,30 +106,27 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="tab-pane fade" id="MachineTranslation">
+                  <fieldset style="width:50%"><legend>Language Model</legend>
+                  <input type="file" class="files"  name="MT">
+                  <div id="progress_bar"><div class="percent">0%</div></div>
+
+                  </fieldset>
+
+                  <div id="response3" class="well" style="  height:100%; width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;"></div>
 
         </div>
-        <div id="response"></div>
-        <script type='text/javascript'>
-        $(function(){
-          $("#formoid").submit(function(event){
-              event.preventDefault();
 
-              $.ajax({
-                      url:'',
-                      type:'POST',
-                      data:$(this).serialize(),
-                      success:function(result){
-alert(result);
-                          $("#response").text(result);
-                      }
-              });
-          });
-
-        });
-        </script>
+                <div id="response"></div>
+                        <div id="response2"></div>
 
         {{src_lang}} {{trg_lang}} {{TM}} {{LM}}
+
 </body>
 
 </html>
+
+<script src="javascripts/handleFileSelect.js"></script>
+<script>addEventListenerToFileUploads(document);</script>
