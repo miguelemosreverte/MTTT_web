@@ -1,3 +1,5 @@
+
+var files_contents = new Object;
 var progress_bars_by_tag = {};
 /*text_locations links the name of the input in where to upload
   a text file with the id of the <!> in where to show the text
@@ -13,7 +15,7 @@ var text_locations = {
 var function_by_filename= {
   "MT": function (text) {
           $.ajax({
-                  url:'',
+                  url:'Translate',
                   type:'POST',
                   data:"{&TranslationInput="+text+"}",
                   success:function(result){
@@ -59,7 +61,8 @@ function maybeSetText(tag,text){
 
   function addEventListenerToFileUploads(evt, doc) {
     document=doc;
-    var elements = document.getElementsByClassName('files');
+    //var elements = document.getElementsByClassName('CorpusPreparationFiles');
+    var elements = document.querySelectorAll('.files, .CorpusPreparationFiles');
     var progress_bars = document.getElementsByClassName('percent');
 
     for (let element of elements) {
@@ -98,6 +101,7 @@ function maybeSetText(tag,text){
       {
         function_by_filename[tag](e.target.result);
       }
+      files_contents[tag] = e.target.result;
     }
 
     // Read in the image file as a binary string.
@@ -122,31 +126,21 @@ $(function(){
   });*/
 
 
-
-//TODO specify which input is missing a file
   $(function(){
-    $("#formoid").submit(function(event){
+    $("#CorpusPreparationForm").submit(function(event){
         event.preventDefault();
-        var input = document.getElementById('files');
-        if (!input.files[0]) {
-          alert("Please select a file before clicking 'Load'");
-        }
-        else {
-          file = input.files[0];
-          var reader = new FileReader();
-          reader.readAsText(file);
-          reader.onload = function(e) {
-                      // browser completed reading file - display it
-                      //alert(e.target.result);
-                      $.ajax({
-                              url:'',
-                              type:'POST',
-                              data:"&src_lang=" + $("#src_lang").val() + "&trg_lang=" + $("#trg_lang").val() + '&TranslationInput=' + e.target.result + '&TM=' + $("#TM").val(),
-                              success:function(result){
-                                  $("#response3").text(JSON.stringify(result));
-                              }
-                            });
-                  };
+        if(files_contents["TM"] === undefined) {alert("Ingrese un archivo en Translation Model");}
+        else if(files_contents["LM"] === undefined) {alert("Ingrese un archivo en Language Model");}
+        else{
+          $.ajax({
+                  url:'Corpus',
+                  type:'POST',
+                  data:$(this).serialize() + "&TM:" + files_contents["TM"] + "&LM:" + files_contents["LM"],
+                  success:function(result){
+                      alert(result);
+                      $("#response").text(result);
+                  }
+          });
         }
     });
   });
