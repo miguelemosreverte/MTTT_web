@@ -5,7 +5,7 @@ var progress_bars_by_tag = {};
   a text file with the id of the <!> in where to show the text
 */
 var text_locations = {
-  "MT": "#response3"
+  "MT": "#MachineTranslationResults"
   // etc.
 };
 
@@ -107,24 +107,6 @@ function maybeSetText(tag,text){
     // Read in the image file as a binary string.
     reader.readAsBinaryString(evt.target.files[0]);
   }
-/*
-$(function(){
-    $("#formoid").submit(function(event){
-        event.preventDefault();
-
-        $.ajax({
-                url:'',
-                type:'POST',
-                data:$(this).serialize(),
-                success:function(result){
-                    alert(result);
-                    $("#response").text(result);
-                }
-        });
-    });
-
-  });*/
-
 
   $(function(){
     $("#CorpusPreparationForm").submit(function(event){
@@ -137,8 +119,7 @@ $(function(){
                   type:'POST',
                   data:$(this).serialize() + "&TM=" + files_contents["TM"] + "&LM=" + files_contents["LM"],
                   success:function(result){
-                      //alert(result);
-                      //$("#response").text(result);
+                      $("#CorpusPreparationResults").text(result);
                   }
           });
         }
@@ -152,8 +133,7 @@ $(function(){
             type: "POST",
             url: "Train",
             success: function(result) {
-                alert(result);
-                $("#response").text(result);
+                $("#TrainingResults").text(result);
             },
             error: function(result) {
                 alert('error');
