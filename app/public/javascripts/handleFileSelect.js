@@ -133,14 +133,31 @@ $(function(){
         else if(files_contents["LM"] === undefined) {alert("Ingrese un archivo en Language Model");}
         else{
           $.ajax({
-                  url:'Corpus',
+                  url:'CorpusPreparation',
                   type:'POST',
-                  data:$(this).serialize() + "&TM:" + files_contents["TM"] + "&LM:" + files_contents["LM"],
+                  data:$(this).serialize() + "&TM=" + files_contents["TM"] + "&LM=" + files_contents["LM"],
                   success:function(result){
-                      alert(result);
-                      $("#response").text(result);
+                      //alert(result);
+                      //$("#response").text(result);
                   }
           });
         }
     });
   });
+
+  $(document).ready(function(){
+    $("#TrainingButton").click(function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "Train",
+            success: function(result) {
+                alert(result);
+                $("#response").text(result);
+            },
+            error: function(result) {
+                alert('error');
+            }
+        });
+    });
+});

@@ -33,6 +33,10 @@
             <form id="CorpusPreparationForm" method="post">
                 <div class="row">
                     <div class="col-sm-3">
+
+                        <fieldset><legend>Language Model Name</legend>
+                          <input type="text" name="LM_name"><br>
+                        </fieldset>
                         <fieldset><legend>Languages</legend>
                             Source text
                             <select name="src_lang">
@@ -104,6 +108,7 @@
                 <div class="col-sm-6">
                     <div class="well well-lg">
                         <p>2 to {{ title }}!</p>
+                      <button id="TrainingButton">Start training</button>
                     </div>
                 </div>
             </div>
