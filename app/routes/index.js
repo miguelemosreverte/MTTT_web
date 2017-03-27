@@ -27,24 +27,22 @@ router.post('/CorpusPreparation', function(req, res) {
             'Content-Length': Buffer.byteLength(data)
         }
     };
-    var pepe = '';
-    var req2 = http.request(options, function(res2) {
-        res2.setEncoding('utf8');
-        res2.on('data', function (chunk) {
-            console.log("chunk: " + chunk);
-            pepe += chunk;
+    var final_result = '';
+    var moses_api_request = http.request(options, function(moses_response) {
+        moses_response.setEncoding('utf8');
+        moses_response.on('data', function (chunk) {
+            final_result += chunk;
         });
-        res2.on('end', function () {
-              console.log("body end: " + pepe);
-              res.json(pepe);
+        moses_response.on('end', function () {
+              res.json(final_result);
         });
     });
-    req2.on('error', function(err) {
+    moses_api_request.on('error', function(err) {
             //res.send('error: ' + err.message);
             console.log('error: ' + err.message);
         });
-    req2.write(data);
-    req2.end();
+    moses_api_request.write(data);
+    moses_api_request.end();
 });
 
 router.post('/Translate', function(req, res) {
