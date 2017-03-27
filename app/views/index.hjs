@@ -31,21 +31,18 @@
         <div class="tab-pane fade in active" id="home">
 
             <form id="CorpusPreparationForm" method="post">
+
                 <div class="row">
                     <div class="col-sm-3">
-
-                        <fieldset><legend>Language Model Name</legend>
-                          <input type="text" name="LM_name"><br>
-                        </fieldset>
                         <fieldset><legend>Languages</legend>
-                            Source text
+                            Source
                             <select name="src_lang">
                                 <option value="en">en</option>
                                     <option value="fr">fr</option>
                                         <option value="de">de</option>
                             </select>
                             <br>
-                            Target text&nbsp;
+                            Target&nbsp;
                             <select name="trg_lang">
                                 <option value="en">en</option>
                                     <option value="fr">fr</option>
@@ -53,37 +50,43 @@
                             </select>
                         </fieldset>
                     </div>
-                    <div class="col-sm-5   col-sm-offset-4">
-                          <fieldset><legend>Translation Model</legend>
-                          <input type="file" class="CorpusPreparationFiles" name="TM">
-                          <div id="progress_bar"><div class="percent">0%</div></div>
-                          </fieldset>
+                    <div class="col-sm-3">
+
+                        <fieldset><legend>Language Model Name</legend>
+                          <input type="text" name="LM_name" style="width:100%"><br>
+                        </fieldset>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         <fieldset><legend>Results</legend>
-                            <div id="CorpusPreparationResults" class="well" style="  height:100%; width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;"></div>
+                            <div id="CorpusPreparationResults" class="well" style="  height:100%; min-height:340px; width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;"></div>
                         </fieldset>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
 
                         <div class="row">
-                            <fieldset><legend>Language Model</legend>
-                            <input type="file" class="CorpusPreparationFiles" name="LM">
+
+                            <fieldset><legend>Translation Model</legend>
+                            <div class=pseudo_legend> Source Text</div><br>
+                            <input type="file" class="CorpusPreparationFiles" name="TM_source">
+                            <div id="progress_bar"><div class="percent">0%</div></div>
+                            <div class=pseudo_legend> Target Text</div><br>
+                            <input type="file" class="CorpusPreparationFiles" name="TM_target">
                             <div id="progress_bar"><div class="percent">0%</div></div>
                             </fieldset>
                         </div>
-                        <div class="row">
-                            <fieldset><legend>Settings</legend>
-                                this is not neccesary now, as the user can download the results anytime.
-                            </fieldset>
+                            <div class="row">
+                              <fieldset><legend>Language Model</legend>
+                              <input type="file" class="CorpusPreparationFiles" name="LM">
+                              <div id="progress_bar"><div class="percent">0%</div></div>
+                              </fieldset>
                         </div>
-                        <div class="row">
-                            <fieldset>
-                                <input type="submit" value="Start corpus preproccesing">
-                            </fieldset>
-                        </div>
+                            <div class="row">
+                              <fieldset>
+                                <button>Start Corpus Preparation</button>
+                              </fieldset>
+                          </div>
                     </div>
                 </div>
 
@@ -113,10 +116,6 @@
                   <div id="MachineTranslationResults" class="well" style="  height:100%; width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;"></div>
 
         </div>
-
-
-        {{src_lang}} {{trg_lang}} {{TM}} {{LM}}
-
 </body>
 
 </html>

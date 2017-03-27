@@ -111,13 +111,14 @@ function maybeSetText(tag,text){
   $(function(){
     $("#CorpusPreparationForm").submit(function(event){
         event.preventDefault();
-        if(files_contents["TM"] === undefined) {alert("Ingrese un archivo en Translation Model");}
+        if(files_contents["TM_source"] === undefined) {alert("Ingrese source en Translation Model");}
+        else if(files_contents["TM_target"] === undefined) {alert("Ingrese target en Translation Model");}
         else if(files_contents["LM"] === undefined) {alert("Ingrese un archivo en Language Model");}
         else{
           $.ajax({
                   url:'CorpusPreparation',
                   type:'POST',
-                  data:$(this).serialize() + "&TM=" + files_contents["TM"] + "&LM=" + files_contents["LM"],
+                  data:$(this).serialize() + "&TM_source=" + files_contents["TM_source"] + "&TM_target=" + files_contents["TM_target"] + "&LM=" + files_contents["LM"],
                   success:function(result){
                       $("#CorpusPreparationResults").text(result);
                   }

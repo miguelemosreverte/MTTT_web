@@ -14,7 +14,8 @@ router.post('/CorpusPreparation', function(req, res) {
                 +"&target_lang="+req.body.trg_lang
                 +"&LM_name="+req.body.LM_name
                 +"&LM="+req.body.LM
-                +"&TM="+req.body.TM
+                +"&TM_source="+req.body.TM_source
+                +"&TM_target="+req.body.TM_target
 
     var options = {
         host: '172.20.129.2',
@@ -26,10 +27,16 @@ router.post('/CorpusPreparation', function(req, res) {
             'Content-Length': Buffer.byteLength(data)
         }
     };
-    var req2 = http.request(options, function(res) {
-        res.setEncoding('utf8');
-        res.on('data', function (chunk) {
-            console.log("body: " + chunk);
+    var pepe = '';
+    var req2 = http.request(options, function(res2) {
+        res2.setEncoding('utf8');
+        res2.on('data', function (chunk) {
+            console.log("chunk: " + chunk);
+            pepe += chunk;
+        });
+        res2.on('end', function () {
+              console.log("body end: " + pepe);
+              res.json(pepe);
         });
     });
     req2.on('error', function(err) {
@@ -38,22 +45,6 @@ router.post('/CorpusPreparation', function(req, res) {
         });
     req2.write(data);
     req2.end();
-
-    res.json(data + "..." + JSON.stringify(req.body));
-/*
-    request({
-      uri: "http://172.20.129.2:5000/PrepareCorpus" + req.body['TranslationInput'],
-      method: "POST",
-    }, function(error, response, body) {
-      if (error){
-        res.json(JSON.stringify(error));
-      }
-      else{
-        res.json(body);
-      }
-    });*/
-
-
 });
 
 router.post('/Translate', function(req, res) {
