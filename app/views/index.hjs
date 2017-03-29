@@ -6,14 +6,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link href="stylesheets/jquery-ui.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="javascripts/handleFileSelect.js"></script>
     <!-- Own css -->
     <link rel="stylesheet" href="stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( ".resizableFieldSet" ).resizable({
+          animate: true,ghost: true,
+          handles: 'e, w',
+        });
+      } );
+
+    </script>
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/jquery-ui.js"></script>
+
 </head>
 
 <body>
+
     <ul id="myTab" class="nav nav-tabs">
         <li class="active">
             <a href="#home" data-toggle="tab">
@@ -23,6 +40,7 @@
 
         <li><a href="#Training" data-toggle="tab">Training</a></li>
         <li><a href="#MachineTranslation" data-toggle="tab">Machine Translation</a></li>
+        <li><a href="#PostEdition" data-toggle="tab">Post Edition</a></li>
 
     </ul>
 
@@ -53,7 +71,8 @@
                     <div class="col-sm-3">
 
                         <fieldset><legend>Language Model Name</legend>
-                          <input type="text" name="LM_name" style="width:100%"><br>
+                          <br>
+                          <input type="text" name="LM_name" style="width:100%">
                         </fieldset>
                     </div>
                 </div>
@@ -69,16 +88,16 @@
 
                             <fieldset><legend>Translation Model</legend>
                             <div class=pseudo_legend> Source Text</div><br>
-                            <input type="file" class="CorpusPreparationFiles" name="TM_source">
+                            <input type="file" class="files" name="TM_source">
                             <div id="progress_bar"><div class="percent">0%</div></div>
                             <div class=pseudo_legend> Target Text</div><br>
-                            <input type="file" class="CorpusPreparationFiles" name="TM_target">
+                            <input type="file" class="files" name="TM_target">
                             <div id="progress_bar"><div class="percent">0%</div></div>
                             </fieldset>
                         </div>
                             <div class="row">
                               <fieldset><legend>Language Model</legend>
-                              <input type="file" class="CorpusPreparationFiles" name="LM">
+                              <input type="file" class="files" name="LM">
                               <div id="progress_bar"><div class="percent">0%</div></div>
                               </fieldset>
                         </div>
@@ -116,9 +135,202 @@
                   <div id="MachineTranslationResults" class="well" style="  height:100%; width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;"></div>
 
         </div>
+        <div class="tab-pane fade" id="PostEdition">
+
+          <div class="row">
+            <div class="col-sm-6">
+                  <fieldset><legend></legend>
+                  <div class=pseudo_legend> Source Text</div><br>
+                  <input type="file" class="files" name="Untranslated_PE">
+                  <div id="progress_bar"><div class="percent">0%</div></div>
+                  <div class=pseudo_legend> Target Text</div><br>
+                  <input type="file" class="files" name="Translated_PE">
+                  <div id="progress_bar"><div class="percent">0%</div></div>
+                  </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+                  <fieldset class="resizableFieldSet"><legend></legend>
+                    <table class="tableSection" id="PostEditionTable">
+
+
+                      <thead>
+                      <tr>
+                      <th>header 1</th>
+                      <th>header 2</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                        <tr>
+                        <td>lean</td>
+                        <td>cell 1</td>
+                        </tr>
+                        <tr>
+                        <td>chacha</td>
+                        <td>cell 2</td>
+                        </tr>
+                        <tr>
+                        <td>okaoka</td>
+                        <td>cell 3</td>
+                        </tr>
+
+                      </tbody>
+                      </table>
+                  </fieldset>
+          </div>
+        </div>
+    </div>
+
+
+
+
 </body>
 
 </html>
 
-<script src="javascripts/handleFileSelect.js"></script>
 <script>addEventListenerToFileUploads(document);</script>

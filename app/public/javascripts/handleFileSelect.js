@@ -22,7 +22,9 @@ var function_by_filename= {
                       maybeSetText("MT",result);
                   }
           });
-      }
+      },
+  "Untranslated_PE": fillTablePE,
+  "Translated_PE": fillTablePE,
 };
 
 function maybeSetText(tag,text){
@@ -62,7 +64,7 @@ function maybeSetText(tag,text){
   function addEventListenerToFileUploads(evt, doc) {
     document=doc;
     //var elements = document.getElementsByClassName('CorpusPreparationFiles');
-    var elements = document.querySelectorAll('.files, .CorpusPreparationFiles');
+    var elements = document.getElementsByClassName('files');
     var progress_bars = document.getElementsByClassName('percent');
 
     for (let element of elements) {
@@ -97,16 +99,49 @@ function maybeSetText(tag,text){
       progress.textContent = '100%';
       setTimeout("document.getElementById('progress_bar').className='';", 2000);
       maybeSetText(tag,e.target.result);
+      files_contents[tag] = e.target.result;
       if (tag in function_by_filename)
       {
         function_by_filename[tag](e.target.result);
       }
-      files_contents[tag] = e.target.result;
     }
 
     // Read in the image file as a binary string.
     reader.readAsBinaryString(evt.target.files[0]);
   }
+
+  function populateTable() {
+
+      var tableContent = '<thead><tr><th>Untranslated Source</th><th>Machine Translated</th></tr></thead><tbody>';
+
+      //this will split the string into array line by line
+      var a = files_contents["Untranslated_PE"].split('\n');
+      var b = files_contents["Translated_PE"].split('\n');
+      var c = a.map(function (e, i) {
+          return [e, b[i]];
+      });
+        //here we're itraing the array which you've created and printing the values
+        $.each(c , function(key,value){
+            tableContent += '<tr>';
+            tableContent += '<td>' + value[0] + '</td>';
+            tableContent += '<td>' + value[1] + '</td>';
+            tableContent += '</tr>';
+      });
+
+      tableContent += '</tbody>'
+      $('#PostEditionTable').html(tableContent);
+
+
+  };
+
+  function fillTablePE(file)
+  {
+    if(files_contents["Untranslated_PE"] !== undefined && files_contents["Translated_PE"] !== undefined)
+    {
+      populateTable();
+    }
+  }
+
 
   $(function(){
     $("#CorpusPreparationForm").submit(function(event){
@@ -141,4 +176,5 @@ function maybeSetText(tag,text){
             }
         });
     });
+
 });

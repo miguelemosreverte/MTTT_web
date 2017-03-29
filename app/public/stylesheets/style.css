@@ -125,3 +125,38 @@ button,.nav{
    background-color: #27496d;
    text-shadow: -1px 1px #193047;
 }
+
+th {
+    border-style: solid;
+    background-color: #6496c8;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+table.tableSection {
+    display: table;
+    width: 100%;
+}
+table.tableSection thead, table.tableSection tbody {
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody {
+    overflow: scroll;
+    height: 300px;
+    min-height: 300px;
+}
+table.tableSection tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+}
+table.tableSection th, table.tableSection td {
+    width: 50%;
+}
+
+.resizableFieldSet{
+    max-height:360px;
+    min-height:360px;
+}
