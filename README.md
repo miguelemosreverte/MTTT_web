@@ -1,6 +1,19 @@
-# Express app with nodemon development server
+# TTT_web
+TTT_web is a port to the web of TTT, (short of Translator's Tranining Tool), made in cooperation with Paula Estrella and Roxana Lafuente.
 
-Use [nodemon's](https://github.com/remy/nodemon) legacy mode to monitor file changes in your container. The app will restart, if you change any **.js**, **.json** or **.hjs** file.
+some pics for the lazy (deploying this app is incredibly easy thanks to the Docker dev team.):
+The pics have been taken today, 29 of March of 2017, and will not be representative of the final product. And I do not mean the phrase in the way it is usually used for, I mean that only two weeks have gotten the project so far, and a year is ready to be used to continue it. So, I fully expect it to get better. Here is the first tab, Corpus Preparation: 
+![alt text](https://cloud.githubusercontent.com/assets/9152392/24483999/3a7b9a12-14d2-11e7-8c17-e72ec8ba31e6.png)
+Now here is the Training tab, where the user receives the Moses output from the training:
+![alt text](https://cloud.githubusercontent.com/assets/9152392/24483997/3a770dbc-14d2-11e7-810a-e8177e9496c8.png)
+And finnally, the Machine Translation tab, where the user can upload files and translate them using the recently built Language Model.
+![alt text](https://cloud.githubusercontent.com/assets/9152392/24483998/3a79ac0c-14d2-11e7-9c88-d45852d7131b.png)
+
+All good but... here is where it gets better: See the PostEdition table? You can resize it live. You cannot do that using PyQT or GTK. 
+![alt text](https://cloud.githubusercontent.com/assets/9152392/24483996/3a7572d6-14d2-11e7-821d-09bc3e472703.png)
+
+Evaluation tab and Statistics are to be added.
+
 
 ## Prerequisites
 
