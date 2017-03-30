@@ -130,6 +130,7 @@ function maybeSetText(tag,text){
 
       tableContent += '</tbody>'
       $('#PostEditionTable').html(tableContent);
+      $('#PostEditionTable2').html(tableContent);
 
 
   };

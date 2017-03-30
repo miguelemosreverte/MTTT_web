@@ -18,10 +18,12 @@
     <script>
       $( function() {
         $( ".resizableFieldSet" ).resizable({
-          animate: true,ghost: true,
-          handles: 'e, w',
-        });
+          handles: 'e',
+  resize: function() {
+    $(".resizableFieldSet2").outerWidth($(".resizableFieldSetContainer").innerWidth() - $(".resizableFieldSet").outerWidth());
+        }
       } );
+    } );
 
     </script>
     <script src="javascripts/jquery.js"></script>
@@ -150,11 +152,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-6">
-                  <fieldset class="resizableFieldSet"><legend></legend>
+                  <div class="resizableFieldSetContainer" style="position:absolute;width:100%">
+                  <fieldset class="resizableFieldSet" style=" width:40% !important;float: left;"><legend></legend>
                     <table class="tableSection" id="PostEditionTable"></table>
                   </fieldset>
-          </div>
+                          <fieldset class="resizableFieldSet2"><legend></legend>
+                            <table class="tableSection" id="PostEditionTable2" style="float: right;"></table>
+                          </fieldset>
+                  </div>
         </div>
     </div>
 
