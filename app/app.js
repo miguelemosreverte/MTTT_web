@@ -12,7 +12,7 @@ var app = express();
 
 app.engine('html', require('ejs').renderFile);
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views/TTT_views'));
 app.set('view engine', 'html');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
