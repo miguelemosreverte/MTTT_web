@@ -4,3 +4,6 @@
 [submodule "app/public/TTT_public_folder"]
 	path = app/public/TTT_public_folder
 	url = https://github.com/miguelemosreverte/TTT_public_folder
+[submodule "app/views/TTT_views"]
+	path = app/views/TTT_views
+	url = https://github.com/miguelemosreverte/TTT_views
