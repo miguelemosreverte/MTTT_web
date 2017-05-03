@@ -5,7 +5,7 @@ var http = require('http');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('home');
 });
 router.post('/CorpusPreparation', function(req, res) {
 
