@@ -1,3 +1,6 @@
 [submodule "Moses-API"]
 	path = Moses-API
 	url = https://github.com/miguelemosreverte/Moses-API
+[submodule "app/public/TTT_public_folder"]
+	path = app/public/TTT_public_folder
+	url = https://github.com/miguelemosreverte/TTT_public_folder
