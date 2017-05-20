@@ -10,6 +10,8 @@ router.get('/', function(req, res) {
 
 router.post('/CorpusPreparation', function(req, res) {
     req.session.LM_name = req.body.LM_name
+    req.session.source_lang = req.body.source_lang
+    req.session.target_lang = req.body.target_lang
     request.post('http://moses_api:5000/PrepareCorpus').form({
         TM_source : req.body.TM_source,
         TM_target : req.body.TM_target,
@@ -40,8 +42,11 @@ router.post('/SetLM', function(req, res) {
       req.session.LM_name = req.body['LM_name']
 });
 
+ -router.get('/GetLM', function(req, res,next) {
+      req.pipe(request.get('http://moses_api:5000/GetLM/'+ req.query.LM_name)).pipe(res)
+  });
+
 router.post('/Translate', function(req, res) {
-  //TODO send the translation text as POST instead of GET
     request.post('http://moses_api:5000/Translate').form({
         LM_name : req.session.LM_name,
         text : req.body['TranslationInput']})
@@ -53,7 +58,7 @@ router.post('/GetAvailableLMs', function(req, res) {
 });
 
 router.post('/Train', function(req, res) {
-    request.get('http://moses_api:5000/Train/' + req.session.LM_name
+    request.get('http://moses_api:5000/Train/' + req.session.LM_name + '/' + req.session.source_lang +'/' + req.session.target_lang
     ).pipe(res)
 });
 
