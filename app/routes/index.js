@@ -1,12 +1,15 @@
 var express = require('express');
 var request = require('request');
+var expressSession = require('express-session');
 var router = express.Router();
+router.use(expressSession({secret:'somesecrettokenhere'}));
 
 router.get('/', function(req, res) {
-  res.render('home');
+  res.render('home')
 });
 
 router.post('/CorpusPreparation', function(req, res) {
+    req.session.LM_name = req.body.LM_name
     request.post('http://moses_api:5000/PrepareCorpus').form({
         TM_source : req.body.TM_source,
         TM_target : req.body.TM_target,
@@ -34,16 +37,15 @@ router.post('/Evaluation', function(req, res) {
 });
 
 router.post('/SetLM', function(req, res) {
-      request.get('http://moses_api:5000/SetLM/'+ req.body['LM_name']).pipe(res)
-});
-
-
-router.get('/GetLM', function(req, res,next) {
-      req.pipe(request.get('http://moses_api:5000/GetLM/'+ req.query.LM_name)).pipe(res)
+      req.session.LM_name = req.body['LM_name']
 });
 
 router.post('/Translate', function(req, res) {
-    request.get('http://moses_api:5000/Translate/'+  req.body['TranslationInput']).pipe(res)
+  //TODO send the translation text as POST instead of GET
+    request.post('http://moses_api:5000/Translate').form({
+        LM_name : req.session.LM_name,
+        text : req.body['TranslationInput']})
+    .pipe(res);
 });
 
 router.post('/GetAvailableLMs', function(req, res) {
@@ -51,7 +53,8 @@ router.post('/GetAvailableLMs', function(req, res) {
 });
 
 router.post('/Train', function(req, res) {
-    request.get('http://moses_api:5000/Train').pipe(res)
+    request.get('http://moses_api:5000/Train/' + req.session.LM_name
+    ).pipe(res)
 });
 
 module.exports = router;
