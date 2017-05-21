@@ -48,7 +48,7 @@ router.get('/GetLM', function(req, res,next) {
 
 router.post('/Translate', function(req, res) {
     request.post('http://moses_api:5000/Translate').form({
-        LM_name : req.session.LM_name,
+        LM_name : req.body['LM_name'],
         text : req.body['TranslationInput']})
     .pipe(res);
 });
