@@ -1,5 +1,5 @@
 # TTT_web
-TTT_web is a port to the web of TTT, (short of Translator's Tranining Tool), made in cooperation with Paula Estrella.
+MTTT_web is a port to the web of TTT, (short of Machine Translation Training Tool), made in cooperation with Paula Estrella.
 
 Here's the Corpus Preparation tab, where the users can choose files and prepare them (ie.: send the for tokenization) for the training:
 ![alt text](https://cloud.githubusercontent.com/assets/9152392/26280745/70e65242-3db6-11e7-9583-e130823c643d.png)
