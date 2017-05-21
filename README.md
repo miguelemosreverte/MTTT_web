@@ -1,18 +1,21 @@
 # TTT_web
-TTT_web is a port to the web of TTT, (short of Translator's Tranining Tool), made in cooperation with Paula Estrella and Roxana Lafuente.
+MTTT_web is a port to the web of TTT, (short of Machine Translation Training Tool), made in cooperation with Paula Estrella.
 
-some pics for the lazy (deploying this app is incredibly easy thanks to the Docker dev team.):
-The pics have been taken today, 29 of March of 2017, and will not be representative of the final product. And I do not mean the phrase in the way it is usually used for, I mean that only two weeks have gotten the project so far, and a year is ready to be used to continue it. So, I fully expect it to get better. Here is the first tab, Corpus Preparation: 
-![alt text](https://cloud.githubusercontent.com/assets/9152392/24483999/3a7b9a12-14d2-11e7-8c17-e72ec8ba31e6.png)
-Now here is the Training tab, where the user receives the Moses output from the training:
-![alt text](https://cloud.githubusercontent.com/assets/9152392/24483997/3a770dbc-14d2-11e7-810a-e8177e9496c8.png)
-And finnally, the Machine Translation tab, where the user can upload files and translate them using the recently built Language Model.
-![alt text](https://cloud.githubusercontent.com/assets/9152392/24483998/3a79ac0c-14d2-11e7-9c88-d45852d7131b.png)
+Here's the Corpus Preparation tab, where the users can choose files and prepare them (ie.: send the for tokenization) for the training:
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280745/70e65242-3db6-11e7-9583-e130823c643d.png)
+The training tab:
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280746/70fb1c7c-3db6-11e7-84f7-4764277f7beb.png)
+The machine translation tab:
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280747/70fef1a8-3db6-11e7-8f62-ea7c1194b38c.png)
+Evaluation:
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280748/71024614-3db6-11e7-9136-3dd1278cff7d.png)
+Post-Edition, which can be bilingual
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280749/7106bba4-3db6-11e7-8c46-62e16bf25cfb.png)
+or monolingual
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280750/710e72cc-3db6-11e7-8417-5fad7d8c6f29.png)
+And Differences
+![alt text](https://cloud.githubusercontent.com/assets/9152392/26280763/f0bad3b2-3db6-11e7-9f87-130336b05711.png)
 
-All good but... here is where it gets better: See the PostEdition table? You can resize it live. You cannot do that using PyQT or GTK. 
-![alt text](https://cloud.githubusercontent.com/assets/9152392/24483996/3a7572d6-14d2-11e7-821d-09bc3e472703.png)
-
-Evaluation tab and Statistics are to be added.
 
 
 ## Prerequisites
