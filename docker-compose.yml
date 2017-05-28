@@ -20,6 +20,17 @@ services:
     networks:
       static-network:
         ipv4_address: 172.20.129.2
+
+  corpus_preparation_upload:
+    build: ./CorpusPreparationUpload/
+
+    volumes:
+      - data-volume:/var/lib/moses_api_backup
+    ports:
+      - "9000:9000"
+    networks:
+      static-network:
+        ipv4_address: 172.20.130.2
 networks:
   static-network:
     ipam:
