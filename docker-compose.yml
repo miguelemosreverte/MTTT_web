@@ -1,15 +1,14 @@
 version: "3.0"
 services:
   web:
-    build: ./app/
+    image: localhost:9000/mtttweb_web
     volumes:
       - "./app:/src/app"
     ports:
       - "3030:3000"
 
   moses_api:
-    build: ./Moses-API/
-
+    image: localhost:9000/mtttweb_moses_api
     volumes:
       - data-volume:/var/lib/moses_api_backup
     ports:
@@ -17,3 +16,6 @@ services:
 
 volumes:
   data-volume:
+
+#localhost:9000 is used as a local repository for the docker images
+#in order to avoid downloading and uploading docker images during development

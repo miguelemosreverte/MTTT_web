@@ -1,0 +1,5 @@
+
+#deploy the services
+sudo docker stack deploy --compose-file docker-compose.yml MTTT
+#show the running services
+sudo docker service ls

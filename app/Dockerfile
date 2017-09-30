@@ -1,14 +1,9 @@
 FROM node:0.10.38
 
-RUN mkdir /src
-
-RUN npm install nodemon -g
-
-WORKDIR /src
-ADD package.json /src/package.json
+RUN mkdir /app
+ADD . /app/
+WORKDIR /app
 RUN npm install
-
-ADD nodemon.json /src/nodemon.json
 
 EXPOSE 3000
 
