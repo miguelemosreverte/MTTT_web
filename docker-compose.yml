@@ -1,4 +1,4 @@
-version: '2'
+version: "3.0"
 services:
   web:
     build: ./app/
@@ -6,9 +6,6 @@ services:
       - "./app:/src/app"
     ports:
       - "3030:3000"
-    networks:
-      static-network:
-        ipv4_address: 172.20.128.2
 
   moses_api:
     build: ./Moses-API/
@@ -17,15 +14,6 @@ services:
       - data-volume:/var/lib/moses_api_backup
     ports:
       - "5000:5000"
-    networks:
-      static-network:
-        ipv4_address: 172.20.129.2
-networks:
-  static-network:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          ip_range: 172.28.5.0/24
 
 volumes:
   data-volume:
