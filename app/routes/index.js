@@ -67,4 +67,9 @@ router.post('/Train', function(req, res) {
     ).pipe(res)
 });
 
+
+router.post('/SetUsername', function(req, res) {
+        req.session.username = req.body['username']
+});
+
 module.exports = router;
